@@ -1,0 +1,16 @@
+name: bioinformatics_class
+dependencies: #conda dependencies
+  - python=3.7
+  - jupyter
+  - pip
+  - matplotlib
+  - pandas
+  - numpy
+  - tensorflow
+  - scipy
+  - ipykernel
+  - pip: #pip dependencies
+    - pytest
+    - pywavelets
+    - sklearn
+    - datetime
