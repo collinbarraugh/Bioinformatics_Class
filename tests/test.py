@@ -1,14 +1,18 @@
 import sys
 import os
+import numpy as np
 my_absolute_dirpath = os.path.abspath(os.path.dirname('BIOINFORMATICS_CLASS'))
+sys.path.insert(1, my_absolute_dirpath + '/src')
 
-from upgma_algorithm import upgma_full
+from src.upgma_algorithm import upgma_full
 
 def assert_upgma_full(distance_matrix, labels, true_groupings, true_distances):
     groupings = upgma_full(distance_matrix, labels)['groups']
     distances = upgma_full(distance_matrix, labels)['depths']
-    assert groupings == true_groupings
-    assert distances == true_distances
+    print('dddddddd', groupings)
+    assert np.array_equal(distances, true_distances)
+    assert np.array_equal(groupings, true_groupings)
+
 
 def test_upgma_full():
     class_example = [
@@ -31,4 +35,4 @@ def test_upgma_full():
         ['adbfgce']
     ]
     true_distances = [0, 0.5, 4.0, 6.25, 8.25, 14.5, 17.0]
-    assert_upgma_full(class_example, class_labels,)
+    assert_upgma_full(class_example, class_labels, true_groupings, true_distances)
