@@ -9,7 +9,6 @@ from src.upgma_algorithm import upgma_full
 def assert_upgma_full(distance_matrix, labels, true_groupings, true_distances):
     groupings = upgma_full(distance_matrix, labels)['groups']
     distances = upgma_full(distance_matrix, labels)['depths']
-    print('dddddddd', groupings)
     assert np.array_equal(distances, true_distances)
     assert np.array_equal(groupings, true_groupings)
 
@@ -25,7 +24,7 @@ def test_upgma_full():
         [13, 13, 29, 14, 28, 12, -1]
     ] 
     class_labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-    true_groupings = [
+    true_groupings = np.array([
         ['a', 'b', 'c', 'd', 'e', 'f', 'g'],
         ['a', 'bf', 'c', 'd', 'e', 'g'],
         ['ad', 'bf', 'c', 'e', 'g'],
@@ -33,6 +32,6 @@ def test_upgma_full():
         ['adbfg', 'c', 'e'],
         ['adbfgc', 'e'],
         ['adbfgce']
-    ]
+    ])
     true_distances = [0, 0.5, 4.0, 6.25, 8.25, 14.5, 17.0]
     assert_upgma_full(class_example, class_labels, true_groupings, true_distances)

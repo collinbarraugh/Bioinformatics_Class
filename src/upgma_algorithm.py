@@ -99,8 +99,7 @@ def upgma_full(matrix, codes):
 
     distances = np.concatenate([np.array([0]), depth_stack])
     last_entry = groupings_stack[-1][0] + groupings_stack[-1][1]
-    groupings = np.concatenate([groupings_stack, [last_entry]])
+    groupings_stack.append([last_entry])
 
-
-    return {'groups': groupings, 'depths': distances}
+    return {'groups': groupings_stack, 'depths': distances}
 
