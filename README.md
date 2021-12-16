@@ -47,5 +47,4 @@ Algorithm list:
 
   `pytest -s -v tests/test.py`
 
-## Files
 
